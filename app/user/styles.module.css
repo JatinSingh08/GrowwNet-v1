@@ -11,6 +11,7 @@
   align-items: center;
   justify-items: center;
 }
+
 .profile__image {
   border-radius: 100%;
 }
@@ -73,6 +74,8 @@
   position: relative;
   cursor: pointer;
   overflow: hidden; 
+  width: 200px;
+  height: 200px;
 } 
 
 .post__image {
