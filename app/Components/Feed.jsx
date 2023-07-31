@@ -5,55 +5,48 @@ import Post from './Post';
 import styles from './styles.module.css'
 import InfiniteScroll from "react-infinite-scroller";
 import Spinner from './Spinner';
+import useSWR from 'swr';
+import useSWRImmutable from "swr/immutable";
+
 
 const Feed =  ({initialPosts}) => {
   // const feedData =  await getFeedPosts();
-  const fetching = useRef(false);
-  const [feedPostData, setFeedPostData] = useState(initialPosts);
-  // const [count, setCount] = useState(0);
 
-  const loadMore = async (count) => {
-    if (!fetching.current) {
-      try {
-        fetching.current = true;
-        const clientId2 = '3LZv2FayDXuLt1wIWNNab6qPYXs1zEKvK1'
-        const clientId1 = '04IlfMjge3L2iMia257hp87WUnR1CdmFExKnTJleQXU'
-        const clientId3 = '_lf9V21h8xCBbEjqMBUjhGnLoA_icakFUgpJfgTnfKM';
-        const api = `https://api.unsplash.com/photos/random?client_id=${clientId3}&count=2`;
+  const [feedPostData, setFeedPostData] = useState([...initialPosts]);
 
-        const response = await fetch(
-          api
-        );
-        const data = await response.json();
-        console.log({data})
-        setFeedPostData((prev) => [...prev, ...data]);
-      } finally {
-        fetching.current = false;
+    const fetcher = async (url) => {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
       }
-    }
-  };
+      return response.json();
+    };
+    const clientId2 = '3LZv2FayDXuLt1wIWNNab6qPYXs1zEKvK1'
+    const clientId1 = '04IlfMjge3L2iMia257hp87WUnR1CdmFExKnTJleQXU'
+    const clientId3 = '_lf9V21h8xCBbEjqMBUjhGnLoA_icakFUgpJfgTnfKM';
+  
+    const api = `https://api.unsplash.com/photos/random?client_id=${clientId1}&count=2`;
 
-  // const handleInfiniteScroll = async () => {
-  //   try {
-  //     if(
-  //       window.innerHeight + document.documentElement.scrollTop + 1 >=
-  //       document.documentElement.scrollHeight
-  //     ) {
-  //       setCount(prev => prev + 4);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+    const { data, error, isLoading, mutate } = useSWRImmutable(api, fetcher, {
+      refreshInterval: 60000,
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      // revalidateOnMount: false,
+    });
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleInfiniteScroll);
 
-  //   return () => window.removeEventListener('scroll', handleInfiniteScroll);
-  // } ,[])
-  // useEffect(() => {
-  //   loadMore(count);
-  // } ,[count])
+  
+    const loadMore = () => {
+      // fetcher();
+      mutate();
+    };
+
+    useEffect(() => {
+      if (data) {
+        setFeedPostData(prev => [...prev, ...data]);
+      }
+    }, [data]);
+
   return (
     <InfiniteScroll
     hasMore

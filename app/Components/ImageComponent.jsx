@@ -28,3 +28,4 @@ const ImageComponent = ({ postData }) => {
 };
 
 export default ImageComponent;
+

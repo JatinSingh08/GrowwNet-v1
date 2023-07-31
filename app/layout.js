@@ -1,7 +1,8 @@
 import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
 import "./globals.css";
 import { Inter } from "next/font/google";
-
+import styles from './page.module.css'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,8 +16,13 @@ export default function RootLayout({ children }) {
       {/* <Navbar /> */}
       <body className={inter.className} suppressHydrationWarning={true}>
         <Navbar />
-        <div>
-        {children}
+        <div className={styles.content}>
+          <div className={styles.sidebar}>
+            <Sidebar />
+          </div>
+          <div className={styles.feed}>
+            {children}
+          </div>
 
         </div>
       </body>

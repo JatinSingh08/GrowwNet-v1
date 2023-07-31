@@ -23,6 +23,7 @@ const UserPosts = async ({ user }) => {
               alt={post?.description || post?.alt_description}
               fill={true}
               className={styles.post__image}
+              loading="lazy"
               placeholder="blur"
               blurDataURL={post?.blur_hash}
             />

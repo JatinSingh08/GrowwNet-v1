@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+'use client'
+import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import {
@@ -12,7 +13,6 @@ import { useInView } from "react-intersection-observer";
 import ImageComponent from "./ImageComponent";
 
 const Post = ({ postData }) => {
-  const [feedPostData, setFeedPostData] = useState(postData);
   const {
     id,
     urls,
@@ -46,23 +46,18 @@ const Post = ({ postData }) => {
           <p>{location?.country || "India"}</p>
         </div>
       </div>
-      <div>
           <div className={styles.image__wrapper}>
           <Image
             src={urls?.regular}
             alt="post"
             className={styles.post__image}
-            // width={420}
-            // height={420}
-            loading='lazy'
+            loading="lazy"
             fill={true}
             placeholder="blur"
             blurDataURL={blur_hash}
-            // loading={inView ? 'eager' : 'lazy'} // Load the image eagerly when it comes into the viewport
           />
           </div>
           {/* <ImageComponent postData={postData} />  */}
-      </div>
       <div className={styles.reactions}>
         <div>
           <HeartIcon />

@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div>
-        <Image src='/growwnet.png' alt='growwnet-logo' width={60} height={60} />
+        <Image src='/growwnet.png' alt='growwnet-logo' width={60} height={60} loading='lazy'/>
         <p>GrowwNet</p>
       </div>
       <div>

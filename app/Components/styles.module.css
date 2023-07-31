@@ -85,3 +85,24 @@
   justify-content: center;
   margin: 0.5rem auto;
 }
+
+.sidebar__container { 
+  padding: 3rem 2rem;
+
+}
+.sidebar__container > ul {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  list-style: none;
+  font-size: 22px;
+}
+.sidebar__container > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* justify-content: center; */
+  text-align: start;
+}
+

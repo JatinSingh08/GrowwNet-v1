@@ -1,16 +1,33 @@
-import Image from 'next/image';
-import React from 'react'
-import styles from './../styles.module.css'
-import { MapPinIcon } from '@heroicons/react/24/outline'
+import Image from "next/image";
+import React from "react";
+import styles from "./../styles.module.css";
+import { MapPinIcon } from "@heroicons/react/24/outline";
 
-
-const UserProfileHeader = ({user}) => {
-  const { id, username, name, portfolio_url, bio, location ,followers_count, following_count, total_photos, profile_image} =  user;
+const UserProfileHeader = ({ user }) => {
+  const {
+    id,
+    username,
+    name,
+    portfolio_url,
+    bio,
+    location,
+    followers_count,
+    following_count,
+    total_photos,
+    profile_image,
+  } = user;
 
   return (
     <div className={styles.profile__header_container}>
       <div>
-        <Image src={profile_image?.large} alt='avatar' width={200} height={200} className={styles.profile__image}/>
+        <Image
+          src={profile_image?.large}
+          alt="avatar"
+          width={200}
+          height={200}
+          className={styles.profile__image}
+          loading="lazy"
+        />
       </div>
       <div className={styles.profile__header}>
         <div>
@@ -46,12 +63,10 @@ const UserProfileHeader = ({user}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserProfileHeader
-
-
+export default UserProfileHeader;
 
 // {
 //   user: {

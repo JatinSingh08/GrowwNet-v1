@@ -5,6 +5,7 @@ import styles from './styles.module.css'
 const InitialPosts = async () => {
   const feedData =  await getFeedPosts();
 
+
   return (
     <div className={styles.feed__container}>
     {
