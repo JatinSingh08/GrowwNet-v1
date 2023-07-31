@@ -4,11 +4,12 @@ import styles from './styles.module.css';
 import {
   SunIcon
 } from "@heroicons/react/24/outline";
+import logo from '../../public/growwnetlogo.png'
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div>
-        <Image src='/growwnet.png' alt='growwnet-logo' width={60} height={60} loading='lazy'/>
+        <Image src={logo} alt='growwnet-logo' width={60} height={60} loading='lazy'/>
         <p>GrowwNet</p>
       </div>
       <div>
