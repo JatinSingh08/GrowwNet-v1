@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
@@ -27,37 +27,34 @@ const Post = ({ postData }) => {
 
   const placeholderDataURL = decode(blur_hash, 60, 60);
 
- 
-
   return (
     <div className={styles.post__container}>
       <div className={styles.post__header}>
-      
-          <Image
-            src={profile_image?.large}
-            alt="avatar"
-            width={60}
-            height={60}
-            className={styles["user-avatar"]}
-            loading="lazy"
-          />
+        <Image
+          src={profile_image?.large}
+          alt="avatar"
+          width={60}
+          height={60}
+          className={styles["user-avatar"]}
+          loading="lazy"
+        />
         <div>
           <Link href={`/user/${username}`}>{username}</Link>
           <p>{location?.country || "India"}</p>
         </div>
       </div>
-          <div className={styles.image__wrapper}>
-          <Image
-            src={urls?.regular}
-            alt="post"
-            className={styles.post__image}
-            loading="lazy"
-            fill={true}
-            placeholder="blur"
-            blurDataURL={blur_hash}
-          />
-          </div>
-          {/* <ImageComponent postData={postData} />  */}
+      <div className={styles.image__wrapper}>
+        <Image
+          src={urls?.regular}
+          alt="post"
+          className={styles.post__image}
+          loading="lazy"
+          fill={true}
+          placeholder="blur"
+          blurDataURL={blur_hash}
+        />
+      </div>
+      {/* <ImageComponent postData={postData} />  */}
       <div className={styles.reactions}>
         <div>
           <HeartIcon />

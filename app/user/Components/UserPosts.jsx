@@ -6,7 +6,6 @@ const UserPosts = async ({ user }) => {
   const {
     links: { photos: photosApi },
   } = user;
-  // const api = photosApi + '/quantity=100/' + '?client_id=04IlfMjge3L2iMia257hp87WUnR1CdmFExKnTJleQXU';
   const clientId = "3LZv2FayDXuLt1wIWNNab6qPYXs1zEKvK1-DjPNJCAo";
 
   const api = `${photosApi}/?client_id=${clientId}`;
