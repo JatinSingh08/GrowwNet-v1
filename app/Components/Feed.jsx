@@ -31,7 +31,6 @@ const Feed =  ({initialPosts}) => {
       refreshInterval: 60000,
       revalidateOnFocus: false,
       revalidateIfStale: false,
-      // revalidateOnMount: false,
     });
 
 
