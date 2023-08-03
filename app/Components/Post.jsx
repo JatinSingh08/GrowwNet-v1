@@ -37,7 +37,6 @@ const Post = ({ postData }) => {
             height={60}
             className={styles["user-avatar"]}
             loading="lazy"
-            // onClick={() => router.push(`/user/${username}`)}
           />
         </Link>
         <div>
