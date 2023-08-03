@@ -24,20 +24,22 @@ const Post = ({ postData }) => {
     blur_hash,
   } = postData;
   const { id: userID, username, first_name, last_name, profile_image } = user;
-
   const placeholderDataURL = decode(blur_hash, 60, 60);
 
   return (
     <div className={styles.post__container}>
       <div className={styles.post__header}>
-        <Image
-          src={profile_image?.large}
-          alt="avatar"
-          width={60}
-          height={60}
-          className={styles["user-avatar"]}
-          loading="lazy"
-        />
+        <Link href={`/user/${username}`}>
+          <Image
+            src={profile_image?.large}
+            alt="avatar"
+            width={60}
+            height={60}
+            className={styles["user-avatar"]}
+            loading="lazy"
+            // onClick={() => router.push(`/user/${username}`)}
+          />
+        </Link>
         <div>
           <Link href={`/user/${username}`}>{username}</Link>
           <p>{location?.country || "India"}</p>
